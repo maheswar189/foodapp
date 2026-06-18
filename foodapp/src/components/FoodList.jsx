@@ -1,9 +1,12 @@
+import FoodItem from "./FoodItem.jsx";
 export default function FoodList({ foodData }) {
   return (
     <div>
-      {foodData.map((food) => (
-        <h1>{food.title}</h1>
-      ))}
+      {Array.isArray(foodData)
+        ? foodData.map((food) => (
+            <FoodItem key={food.id || food.title} food={food} />
+          ))
+        : null}
     </div>
   );
 }
